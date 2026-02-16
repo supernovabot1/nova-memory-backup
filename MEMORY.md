@@ -7,12 +7,47 @@
 - Preferred vibe: casual, direct
 - Keanu timezone: GMT+2
 
-## Operating policy (important)
+## Operating policy (important) — v2
 
-- Main model is for planning/debugging/orchestration.
-- Execution should default to Spark sub-agents for scripts/heavier tasks.
-- If Spark fails: retry with Sonnet sub-agent, then main orchestrates completion.
-- Primary goal: keep main chat responsive; avoid blocking long tasks in main.
+### Planning
+- Use most advanced Anthropic model (Opus) for all planning.
+- Cross-check plan against most advanced OpenAI model (Codex) to refine.
+- Plan must include sub-task breakdown for sub-agent execution.
+
+### Execution
+- Sub-agents: use Sonnet for all sub-agent tasks.
+- Each sub-agent works in its own Git branch.
+- Planning-level models (Opus/Codex) handle review and merges.
+- Primary goal: keep main chat responsive; never block on execution.
+
+### Ralph Wigum protocol (complex tasks)
+- After each iteration, sub-agent writes a summary file containing:
+  - Problem being solved
+  - What was tried
+  - What assumptions were made
+  - What worked and what didn't
+- Next iteration reads that summary, tries something different, improves.
+- Main (planning) model regularly checks in on Ralph Wigum sub-agents to assist/unblock.
+
+### Ralph Wigum safeguards
+- Max 5 iterations per task. If still failing, escalate to main.
+- Summary files stored at `workspace/.ralph/<task-name>.md`.
+
+### Branch conventions
+- Sub-agent branches: `nova/<task-name>`.
+- Main reviews and merges to target branch (usually `main`).
+- Merge conflicts resolved by planning-level model only.
+
+### Pre-flight validation
+- Before spawning sub-agent: verify deps, paths, clean branch state.
+- Catches avoidable failures before burning tokens.
+
+### Progress signaling
+- Sub-agents report key milestones (not just final result).
+- Allows main to intervene early if trajectory is wrong.
+
+### Fallback
+- If Sonnet sub-agent fails repeatedly: main orchestrates completion directly.
 
 ## Tooling baseline
 
