@@ -7,6 +7,11 @@
 - Preferred vibe: casual, direct
 - Keanu timezone: GMT+2
 
+## Communication preferences
+
+- Do not send routine 6-hour memory-maintenance updates.
+- Only notify Keanu about memory-maintenance when something fails or needs attention.
+
 ## Operating policy (important) — v2
 
 ### Planning
