@@ -11,8 +11,19 @@
 
 - Do not send routine 6-hour memory-maintenance updates.
 - Only notify Keanu about memory-maintenance when something fails or needs attention.
+- Before any outbound email/message, ask for explicit confirmation in chat first (e.g., “I am about to send X to Y — is this correct?”).
+- Default outbound policy: send drafts/communications to Keanu only for forwarding, unless Keanu explicitly instructs direct sending to a third party.
 
-## Operating policy (important) — v2
+## Operating policy (important) — v3
+
+### Sub-agent usage (updated by Keanu 2026-02-18)
+- **Always use sub-agents** to avoid blocking the main process.
+- Sub-agent model: **Sonnet** for all sub-agent tasks.
+- **Normal tasks:** max 2 sub-agents concurrently.
+- **Coding tasks:** max 4 sub-agents concurrently.
+- **Clarify before assuming:** both main AND sub-agents must ask a clarifying question if unsure about scope/approach — never guess.
+- **5-minute check-in rule:** after spawning a sub-agent, check on it after 5 minutes. If it's still running and appears stuck or spinning, steer or kill it. Always include this instruction in the sub-agent task prompt so the sub-agent itself knows to surface blockers early rather than looping.
+- **Default timezone: GMT+2 (Africa/Johannesburg)** for all dates/times unless explicitly told otherwise.
 
 ### Planning
 - Use most advanced Anthropic model (Opus) for all planning.
