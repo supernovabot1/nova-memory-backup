@@ -93,3 +93,10 @@
 - Memory backup repo: `supernovabot1/nova-memory-backup`.
 - Backup scope: `MEMORY.md` + `memory/*.md` from workspace.
 - Backup cadence: commit and push every 6 hours.
+
+## Session update — 2026-03-06
+- Re-initialized on new server instance
+- Tested SSH → GitHub auth: ✅ (supernovabot1)
+- Browser skill: ✅
+- Gmail: ✅
+- Memory backup system: re-established with 6-hour cron
