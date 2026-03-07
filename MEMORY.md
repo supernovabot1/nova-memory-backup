@@ -77,6 +77,17 @@
 - GitHub account connected (SSH key auth working).
 - Telegram bot/profile workflow active.
 
+## SSH Key — CRITICAL RULE
+
+**NEVER generate a new SSH key. ALWAYS restore the existing persistent key.**
+
+- Persistent key: `/workspace/group/.secrets/id_ed25519` (survives container restarts)
+- Fingerprint: `SHA256:wFsnDxRfPBm9dsLfdhFi5pYQX/ryB7vFuu6yATV8Fdc`
+- GitHub account: `supernovabot1`, added as "Nova SSH Key"
+- Restore on startup: `bash /workspace/group/restore-ssh.sh`
+- Verify: `ssh -T git@github.com` → "Hi supernovabot1!"
+- A cron checks & restores this key every hour automatically
+
 ## Security rules
 
 - Never store raw secrets in memory files.
