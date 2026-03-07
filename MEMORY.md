@@ -111,3 +111,9 @@
 - Browser skill: ✅
 - Gmail: ✅
 - Memory backup system: re-established with 6-hour cron
+
+## Session update — 2026-03-07
+- SSH key hardening complete — self-healing cron active (hourly)
+- Telegram voice transcription implemented (faster-whisper, local, no API cost)
+- faster-whisper installed at /home/node/.local/lib
+- All tests passing, nanoclaw restarted
