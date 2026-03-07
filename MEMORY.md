@@ -9,6 +9,8 @@
 
 ## Communication preferences
 
+- **Keep responses short and direct by default.** No essays unless Keanu asks for detail.
+- Friendly tone, jokes welcome, but get to the point fast.
 - Do not send routine 6-hour memory-maintenance updates.
 - Only notify Keanu about memory-maintenance when something fails or needs attention.
 - Before any outbound email/message, ask for explicit confirmation in chat first (e.g., “I am about to send X to Y — is this correct?”).
@@ -111,6 +113,12 @@
 - Browser skill: ✅
 - Gmail: ✅
 - Memory backup system: re-established with 6-hour cron
+
+## Self-Healing Protocol
+
+- On any error: attempt fix → append entry to `/workspace/group/KNOWN_ISSUES.md` immediately
+- On recurring error: check `KNOWN_ISSUES.md` FIRST before asking Keanu
+- Session start order: (1) restore SSH key, (2) read memory.md, (3) read KNOWN_ISSUES.md
 
 ## Session update — 2026-03-07
 - SSH key hardening complete — self-healing cron active (hourly)
